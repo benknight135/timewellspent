@@ -3,7 +3,7 @@ name: Build
 on:
   # Trigger workflow on master branch push or pull request events
   push:
-    branches: [ master ]
+    branches: [ master, dev]
   pull_request:
     branches: [ master ]
 

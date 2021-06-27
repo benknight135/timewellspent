@@ -9,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h2 className="title">Coming soon!</h2>
         <p><a href="mailto:support@timewellspent.app">support@timewellspent.app</a></p>
-        <p>Last update: 20:24 27/06/2021</p>
+        <p>Last update: 20:26 27/06/2021</p>
       </header>
     </div>
   );
