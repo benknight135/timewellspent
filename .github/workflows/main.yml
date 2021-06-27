@@ -19,10 +19,3 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      # Trigger Netlify build hook using url
-      # url is stored in github secret as NETLIFY_BUILD_HOOK
-      - name: Netlify Build Hook
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: curl -X POST -d {} $NETLIFY_BUILD_HOOK
