@@ -1,4 +1,4 @@
-var cacheName = 'timewellspent-pwa';
+var cacheName = 'timewellspent-0.0.1';
 var filesToCache = [
   '/',
   '/index.html',
@@ -23,4 +23,10 @@ self.addEventListener('fetch', function(e) {
       return response || fetch(e.request);
     })
   );
+});
+
+self.addEventListener('message', function (event) {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
