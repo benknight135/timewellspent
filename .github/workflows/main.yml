@@ -1,77 +1,36 @@
-name: Netlify Deploy
+name: Build
 
-on: [push]
+on:
+  # Trigger workflow on master branch push or pull request events
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Run workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  # This job will:
-  #   * deploy a draft every time there is a commit that is not on master branch
-  #   * comment on that commit with the deploy URL
-  deployDraft:
-    name: Deploy draft to Netlify
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref != 'refs/heads/master'
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
+  build:
+    strategy:
+      matrix:
+        # Netlify uses Ubuntu 16.04 backend OS
+        # Also build for latest ubuntu to check support
+        runs-on: [ubuntu-16.04, ubuntu-latest]
+        # Netlify uses v12
+        # Also build other version to check support
+        node-version: [10.x, 12.x, 14.x, 15.x]
 
-      # Setup NodeJS
-      - name: Setup Node.js
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: 12.x
-
-      # Build
+          node-version: ${{ matrix.node-version }}
       - name: Build
         run: |
           npm ci
           npm run build --if-present
-      # Test
       - name: Test
         run: npm test
-      
-      # Deploy draft
-      - name: Deploy draft to Netlify
-        uses: South-Paw/action-netlify-deploy@v1.2.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          build-dir: './build'
-          draft: true
-          comment-on-commit: true
-
-  # This job will:
-  #   * deploy a production build every time there is a push only on the master branch
-  #   * comment that commit with the deploy URL
-  deployProduction:
-    name: Publish to Netlify
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
-
-      # Setup NodeJS
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 12.x
-
-      # Build
-      - name: Build
-        run: |
-          npm ci
-          npm run build --if-present
-      # Test
-      - name: Test
-        run: npm test
-      
-      # Deploy Production
-      - name: Deploy production to Netlify
-        uses: South-Paw/action-netlify-deploy@v1.2.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          build-dir: './build'
-          comment-on-commit: true
