@@ -12,32 +12,34 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        # Netlify uses Ubuntu 16.04 backend OS
-        # Also build for latest ubuntu to check support
-        runs-on: [ubuntu-16.04, ubuntu-latest]
-        # Netlify uses v12
-        # Also build other version to check support
-        node-version: [10.x, 12.x, 14.x, 15.x]
-
+    runs-on: ubuntu-latest
+    node-version: 12.x
     steps:
       - uses: actions/checkout@v2
-
+      # Setup NodeJS
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      # Cache npm
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+      # Build
       - name: Build
         run: |
           npm ci
           npm run build --if-present
+      # Test
       - name: Test
         run: npm test
+      # Deploy to Netlify
       - uses: netlify/actions/cli@master 
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
           args: deploy --dir=build --prod
-          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
