@@ -18,6 +18,7 @@ GitHub actions are used to test builds (not to deploy).
 ## Configuration
 
 ### Netlify
+***
 [Netlify](https://www.netlify.com/) is used for hosting due to good integration with GitHub and simple setup.
 
 #### Build settings
@@ -34,6 +35,7 @@ GitHub actions are used to test builds (not to deploy).
 Learn more details on [Netlify GitHub Deployment](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
 
 ### React
+***
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
