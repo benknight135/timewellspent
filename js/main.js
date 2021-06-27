@@ -15,7 +15,7 @@ window.onload = () => {
 
   if ('serviceWorker' in navigator) {
 
-    navigator.serviceWorker.register('/service-worker.js').then(reg => {
+    navigator.serviceWorker.register('/sw.js').then(reg => {
       reg.addEventListener('updatefound', () => {
         // A wild service worker has appeared in reg.installing!
         newWorker = reg.installing;
