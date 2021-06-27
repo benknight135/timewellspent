@@ -34,9 +34,10 @@ jobs:
           npm run build --if-present
       - name: Test
         run: npm test
-      # Trigger Netlify build hook using url
-      # url is stored in github secret as NETLIFY_BUILD_HOOK
-      # - name: Netlify Build Hook
-      #   env:
-      #     NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-      #   run: curl -X POST -d {} $NETLIFY_BUILD_HOOK
+      - uses: netlify/actions/cli@master 
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=build --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]
