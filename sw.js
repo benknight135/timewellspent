@@ -1,4 +1,4 @@
-var cacheName = 'timewellspent-0.0.3';
+var cacheName = 'timewellspent-0.0.1';
 var filesToCache = [
   '/',
   '/index.html',
