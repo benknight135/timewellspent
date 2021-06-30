@@ -182,28 +182,4 @@ class BouncingLogo extends React.Component {
   }
 }
 
-// React component for spinning logo
-class Logo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      angle: 0
-    };
-  }
-  componentDidMount() {
-    this.interval = setInterval(() => this.setState({angle: this.state.angle + 2}), 100);
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-  render() {
-    const {angle} = this.state;
-    return (
-      <div className="logo" style={{transform: 'rotate(' + angle + 'deg)'}}>
-        <img src={logo} className="App-logo" alt="logo" />
-      </div>
-    );
-  }
-}
-
 export {App, BouncingLogo};
