@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import {App, BouncingLogo} from './App';
 
 ReactDOM.render(
-  <App />,
+  <div>
+    <App />
+    <BouncingLogo />
+  </div>,
   document.getElementById('root')
 );

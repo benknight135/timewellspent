@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './logo.svg';
 
 function Square(props){
   return(
@@ -41,6 +42,8 @@ class Board extends React.Component {
   render() {
     return (
       <div>
+        <div className="anim-btns">
+        </div>
         <div className="board-row">
           {this.renderSquare(0,0)}
           {this.renderSquare(1,0)}
@@ -146,4 +149,61 @@ class App extends React.Component {
   }
 }
 
-export default App;
+// React component for logo that bounces around the screen
+class BouncingLogo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      x: 0,
+      y: 0
+    };
+  }
+
+  componentDidMount() {
+    this.animate();
+  }
+
+  animate() {
+    const { x, y } = this.state;
+    this.setState({
+      x: x + Math.random() * 2 - 1,
+      y: y + Math.random() * 2 - 1
+    });
+    requestAnimationFrame(this.animate.bind(this));
+  }
+
+  render() {
+    const { x, y } = this.state;
+    return (
+      <div className="logo" style={{ transform: 'translate(' + x + 'px, ' + y + 'px)' }}>
+        <img src={logo} alt="logo" />
+      </div>
+    );
+  }
+}
+
+// React component for spinning logo
+class Logo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      angle: 0
+    };
+  }
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({angle: this.state.angle + 2}), 100);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  render() {
+    const {angle} = this.state;
+    return (
+      <div className="logo" style={{transform: 'rotate(' + angle + 'deg)'}}>
+        <img src={logo} className="App-logo" alt="logo" />
+      </div>
+    );
+  }
+}
+
+export {App, BouncingLogo};
