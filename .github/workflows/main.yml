@@ -28,6 +28,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      # Clean package to fix issue with different package-lock version
+      - name: Cleanup packages
+        run: |
+          rm -rm node_modules
+          rm package-lock.json
       - name: Build
         run: |
           npm ci
