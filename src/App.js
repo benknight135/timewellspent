@@ -1,5 +1,5 @@
-import TicTac from './games/TicTac';
-import LogoBounce from './components/LogoBounce';
+// import TicTac from './games/TicTac';
+// import LogoBounce from './components/LogoBounce';
 import ComingSoon from './pages/ComingSoon';
 
 function App() {
