@@ -2,6 +2,7 @@ import logo from './../data/logo.svg';
 import './ComingSoon.css';
 
 function ComingSoon() {
+    const { REACT_APP_LAST_UPDATE } = process.env;
     return (
         <div className="ComingSoon">
             <header className="ComingSoon-header">
@@ -9,7 +10,7 @@ function ComingSoon() {
                 <img src={logo} className="ComingSoon-logo" alt="logo" />
                 <h2 className="title">Coming soon!</h2>
                 <p><a href="mailto:support@timewellspent.app">support@timewellspent.app</a></p>
-                <p>Last update: 20:26 27/06/2021</p>
+                <p>Last update: {REACT_APP_LAST_UPDATE}</p>
             </header>
         </div>
     );
