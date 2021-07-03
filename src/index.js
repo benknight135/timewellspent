@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {App, BouncingLogo} from './App';
+import TTGame from './TTTGame';
+import LogoBounce from './LogoBounce';
 
 ReactDOM.render(
   <div>
-    <App />
-    <BouncingLogo />
+    <TTGame />
+    <LogoBounce />
   </div>,
   document.getElementById('root')
 );

@@ -1,8 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import {App} from './App';
+import TTTGame from './TTTGame';
+import LogoBounce from './LogoBounce';
 
-test('renders game', () => {
+test('renders all app modules', () => {
   render(
-    <App />
+    <div>
+      <TTGame />
+      <LogoBounce />
+    </div>
   );
 });

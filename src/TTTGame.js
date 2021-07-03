@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 
 function Square(props){
   return(
@@ -33,6 +32,7 @@ class Board extends React.Component {
   renderSquare(i,j) {
     return (
       <Square
+        key={i + '-' + j}
         value={this.props.squares[i][j]}
         onClick={() => this.props.onClick(i,j)}
       />
@@ -40,31 +40,29 @@ class Board extends React.Component {
   }
 
   render() {
+    var board_rows = [];
+    for (var i=0; i < 3; i++) {
+      var board_row_squares = [];
+      for (var j=0; j < 3; j++) {
+        board_row_squares.push(this.renderSquare(i,j));
+      }
+      board_rows.push(
+        <div className="board-row" key={i}>
+          {board_row_squares}
+        </div>
+      );
+    }
     return (
       <div>
         <div className="anim-btns">
         </div>
-        <div className="board-row">
-          {this.renderSquare(0,0)}
-          {this.renderSquare(1,0)}
-          {this.renderSquare(2,0)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(0,1)}
-          {this.renderSquare(1,1)}
-          {this.renderSquare(2,1)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(0,2)}
-          {this.renderSquare(1,2)}
-          {this.renderSquare(2,2)}
-        </div>
+        {board_rows}
       </div>
     );
   }
 }
 
-class App extends React.Component {
+class TTTGame extends React.Component {
   constructor(props) {
     super(props);
     const init_sq = [
@@ -79,11 +77,12 @@ class App extends React.Component {
         }
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
+      historyOrderDesending: false
     };
   }
 
-  handleClick(i,j) {
+  handleHistoryClick(i,j) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = JSON.parse(JSON.stringify(current.squares));
@@ -109,18 +108,42 @@ class App extends React.Component {
     });
   }
 
+  // set history order to ascending
+  toggleHistoryOrder() {
+    this.setState({
+      historyOrderDesending: !this.state.historyOrderDesending
+    });
+  }
+
   render() {
     const history = this.state.history;
+    const historyOrderDesending = this.state.historyOrderDesending;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
+    const selectedStyle = {
+      fontWeight: "bold"
+    };
+
+    const defaultStyle = {
+      fontWeight: "normal"
+    };
+
     const moves = history.map((step, move) => {
-      const desc = move ?
-        'Go to move #' + move :
+      var move_index = move;
+      if (historyOrderDesending) {
+        move_index = (history.length - 1) - move;
+      }
+      const desc = move_index ?
+        'Go to move #' + move_index :
         'Go to game start';
+      var descStyle = defaultStyle;
+      if (move_index === this.state.stepNumber){
+        descStyle = selectedStyle;
+      }
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button style={descStyle} onClick={() => this.jumpTo(move_index)}>{desc}</button>
         </li>
       );
     });
@@ -132,16 +155,24 @@ class App extends React.Component {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
+    let historyOrderText;
+    if (historyOrderDesending){
+      historyOrderText = "descending";
+    } else {
+      historyOrderText = "ascending";
+    }
+
     return (
       <div className="game">
         <div className="game-board">
           <Board
             squares={current.squares}
-            onClick={(i,j) => this.handleClick(i,j)}
+            onClick={(i,j) => this.handleHistoryClick(i,j)}
           />
         </div>
         <div className="game-info">
           <div>{status}</div>
+          <button onClick={() => this.toggleHistoryOrder()}>{historyOrderText}</button>
           <ol>{moves}</ol>
         </div>
       </div>
@@ -149,37 +180,4 @@ class App extends React.Component {
   }
 }
 
-// React component for logo that bounces around the screen
-class BouncingLogo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      x: 0,
-      y: 0
-    };
-  }
-
-  componentDidMount() {
-    this.animate();
-  }
-
-  animate() {
-    const { x, y } = this.state;
-    this.setState({
-      x: x + Math.random() * 2 - 1,
-      y: y + Math.random() * 2 - 1
-    });
-    requestAnimationFrame(this.animate.bind(this));
-  }
-
-  render() {
-    const { x, y } = this.state;
-    return (
-      <div className="logo" style={{ transform: 'translate(' + x + 'px, ' + y + 'px)' }}>
-        <img src={logo} alt="logo" />
-      </div>
-    );
-  }
-}
-
-export {App, BouncingLogo};
+export default TTTGame;
