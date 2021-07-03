@@ -23,7 +23,7 @@ GitHub actions are used to test builds (not to deploy).
 #### Build settings
 **Repository:** github.com/benknight135/timewellspent  
 **Base directory:** Not set  
-**Build command:** npm ci && npm run build --if-present && npm test  
+**Build command:** npm i && npm test && npm run build --if-present 
 **Publish directory:** build  
 
 #### Deploy contexts
