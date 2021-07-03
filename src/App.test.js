@@ -5,7 +5,7 @@ import LogoBounce from './LogoBounce';
 test('renders all app modules', () => {
   render(
     <div>
-      <TTGame />
+      <TTTGame />
       <LogoBounce />
     </div>
   );
