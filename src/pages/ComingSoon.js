@@ -3,7 +3,7 @@ import MetaTags from 'react-meta-tags';
 import './ComingSoon.css';
 
 function ComingSoon() {
-    const { REACT_APP_LAST_UPDATE } = process.env;
+    const { REACT_APP_BUILD_DATE } = process.env;
     return (
         <div className="ComingSoon">
             <MetaTags>
@@ -15,7 +15,7 @@ function ComingSoon() {
                 <h1 className="title">Time Well Spent</h1>
                 <img src={logo} className="ComingSoon-logo" alt="logo" />
                 <h2 className="title">Coming soon!</h2>
-                <p>Last update: {REACT_APP_LAST_UPDATE}</p>
+                <p>Last update: {REACT_APP_BUILD_DATE}</p>
             </header>
         </div>
     );

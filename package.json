@@ -21,14 +21,14 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
+    "workbox-streams": "^5.1.4",
+    "minimist": "^1.2.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "serve": "serve -s build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node ./scripts.js --command \"react-scripts start\"",
+    "build": "node ./scripts.js --command \"react-scripts build\"",
+    "serve": "node ./scripts.js --command \"serve -s build\"",
+    "test": "node ./scripts.js --command \"react-scripts test\""
   },
   "eslintConfig": {
     "extends": [
