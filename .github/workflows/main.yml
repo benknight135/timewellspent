@@ -31,7 +31,7 @@ jobs:
       # Clean package to fix issue with different package-lock version
       - name: Cleanup packages
         run: |
-          rm -rm node_modules
+          rm -r node_modules
           rm package-lock.json
       - name: Build
         run: |
