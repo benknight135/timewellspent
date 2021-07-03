@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {App, BouncingLogo} from './App';
+import App from './App';
 
 ReactDOM.render(
-  <div>
+  <React.StrictMode>
     <App />
-    <BouncingLogo />
-  </div>,
+  </React.StrictMode>,
   document.getElementById('root')
 );
