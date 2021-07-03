@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import TTGame from './TTTGame';
-import LogoBounce from './LogoBounce';
+import App from './App';
 
 ReactDOM.render(
-  <div>
-    <TTGame />
-    <LogoBounce />
-  </div>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );

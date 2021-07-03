@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../data/logo.svg';
 
 // React component for logo that bounces around the screen
 class LogoBounce extends React.Component {

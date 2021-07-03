@@ -1,8 +1,9 @@
 import React from 'react';
+import './TicTac.css';
 
-function Square(props){
+function TicTacSquare(props){
   return(
-    <button className="square" onClick={props.onClick}>
+    <button className="tictac-square" onClick={props.onClick}>
       {props.value}
     </button>
   );
@@ -28,10 +29,10 @@ function calculateWinner(squares) {
   return null;
 }
 
-class Board extends React.Component {
+class TicTacBoard extends React.Component {
   renderSquare(i,j) {
     return (
-      <Square
+      <TicTacSquare
         key={i + '-' + j}
         value={this.props.squares[i][j]}
         onClick={() => this.props.onClick(i,j)}
@@ -47,14 +48,14 @@ class Board extends React.Component {
         board_row_squares.push(this.renderSquare(i,j));
       }
       board_rows.push(
-        <div className="board-row" key={i}>
+        <div className="tictac-board-row" key={i}>
           {board_row_squares}
         </div>
       );
     }
     return (
       <div>
-        <div className="anim-btns">
+        <div className="tictac-board-squares">
         </div>
         {board_rows}
       </div>
@@ -62,7 +63,7 @@ class Board extends React.Component {
   }
 }
 
-class TTTGame extends React.Component {
+class TicTac extends React.Component {
   constructor(props) {
     super(props);
     const init_sq = [
@@ -163,14 +164,14 @@ class TTTGame extends React.Component {
     }
 
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board
+      <div className="tictac">
+        <div className="tictac-board">
+          <TicTacBoard
             squares={current.squares}
             onClick={(i,j) => this.handleHistoryClick(i,j)}
           />
         </div>
-        <div className="game-info">
+        <div className="tictac-info">
           <div>{status}</div>
           <button onClick={() => this.toggleHistoryOrder()}>{historyOrderText}</button>
           <ol>{moves}</ol>
@@ -180,4 +181,4 @@ class TTTGame extends React.Component {
   }
 }
 
-export default TTTGame;
+export default TicTac;
