@@ -18,6 +18,12 @@ body {
     height: 5vh;
 }
 
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .secret {
+        font-size: 1.5vh;
+    }
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
