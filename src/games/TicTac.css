@@ -10,8 +10,8 @@
     color: white;
     float: left;
     width: calc(11vw);
-    height: calc(11vw);
-    font-size: calc(9vw);
+    aspect-ratio: calc(1 / 1);
+    font-size: calc(8vw);
 }
 
 .tictac-square:focus {
@@ -51,7 +51,7 @@
     border: 0.25vw solid #758199;
     margin: calc(0.25vw + 0.25vh);
     width: calc(6vw + 6vh);
-    height: calc(2vw + 2vh);
+    aspect-ratio: calc(3 / 1);
 }
 
 .tictac-board-top {
@@ -65,7 +65,7 @@
     font-weight: normal;
     margin-bottom: 1vh;
     width: calc(2vw + 2vh);
-    height: calc(1vw + 1vh);
+    aspect-ratio: calc(2 / 1);
     font-size: calc(0.45vw + 0.45vh);
     margin-bottom: calc(0.25vw + 0.25vh);
     margin-left: auto;
