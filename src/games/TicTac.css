@@ -9,9 +9,8 @@
     border: 0.5vw solid #758199;
     color: white;
     float: left;
-    width: calc(7vw + 7vh);
-    /* height: calc(7vw + 7vh); */
-    height: calc(7vw + var(--vh, 1vh) * 7);
+    width: calc(6vw + 6vh);
+    height: calc(6vw + 6vh);
     font-size: calc(5vw + 5vh);
 }
 
