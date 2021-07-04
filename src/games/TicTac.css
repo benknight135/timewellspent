@@ -6,12 +6,12 @@
 
 .tictac-square {
     background: #4e5666;
-    border: 0.5vh solid #758199;
+    border: 0.5vw solid #758199;
     color: white;
     float: left;
-    height: 14vh;
-    width: 14vh;
-    font-size: 8vh;
+    height: calc(7vw + 7vh);
+    width: calc(7vw + 7vh);
+    font-size: calc(5vw + 5vh);
 }
 
 .tictac-square:focus {
@@ -19,7 +19,7 @@
 }
 
 .tictac {
-    font-size: 2.2vh;
+    font-size: calc(2vw + 2vh);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,10 +33,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 38.5vh;
-    min-height: 80vh;
-    max-height: 80vh;
-    margin-left: 5px;
+    margin-top: 30vh;
+    min-height: 60vh;
+    max-height: 60vh;
+    margin-left: 2vw;
 }
 
 .tictac-status {
@@ -45,13 +45,13 @@
 
 .tictac-btn {
     font-weight: normal;
-    font-size: 2vh;
+    font-size: calc(0.8vw + 0.8vh);
     color: white;
     background: #4e5666;
-    border: 0.25vh solid #758199;
-    margin: 0.08vh;
-    width: 14vh;
-    height: 5vh;
+    border: 0.25vw solid #758199;
+    margin: calc(0.25vw + 0.25vh);
+    width: calc(6vw + 6vh);
+    height: calc(2vw + 2vh);
 }
 
 .tictac-board-top {
@@ -62,12 +62,12 @@
 }
 
 .tictac-btn.status {
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 1vh;
-    width: 6vh;
-    height: 3vh;
-    font-size: 1.5vh;
-    margin: 0.08vh;
+    width: calc(2vw + 2vh);
+    height: calc(1vw + 1vh);
+    font-size: calc(0.45vw + 0.45vh);
+    margin-bottom: calc(0.25vw + 0.25vh);
     margin-left: auto;
 }
 

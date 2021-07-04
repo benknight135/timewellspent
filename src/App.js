@@ -19,12 +19,14 @@ class App extends React.Component {
 
     render() {
         var page = <ComingSoon />;
+        var btn_text = 'Shh';
         if (this.state.show_secret) {
             page = <TicTac />;
+            btn_text = 'Back';
         }
         return (
             <div className="app">
-                <button className="secret" onClick={() => this.toggleGame()}>Shh</button>
+                <button className="secret" onClick={() => this.toggleGame()}>{btn_text}</button>
                 {page}
                 <Footer />
             </div>
