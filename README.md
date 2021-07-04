@@ -27,7 +27,7 @@ GitHub actions are used to test builds (not to deploy).
 **Publish directory:** build  
 
 #### Deploy contexts
-**Production branch:** master  
+**Production branch:** main
 **Branch deploys:** dev
 
 #### Learn More
