@@ -1,6 +1,7 @@
 {
-  "name": "timewellspent-react-pwa",
+  "name": "timewellspent-pwa",
   "version": "0.0.1",
+  "license" : "BSD-3-Clause",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

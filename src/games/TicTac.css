@@ -1,46 +1,80 @@
-ol, ul {
-    padding-left: 30px;
-    list-style-type: none;
-}
-
 .tictac-board-row:after {
     clear: both;
     content: "";
     display: table;
 }
 
-.tictac-status {
-    margin-bottom: 10px;
-}
-
 .tictac-square {
-    background: #fff;
-    border: 1px solid #999;
+    background: #4e5666;
+    border: 0.5vh solid #758199;
+    color: white;
     float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
+    height: 14vh;
+    width: 14vh;
+    font-size: 8vh;
 }
 
 .tictac-square:focus {
     outline: none;
 }
 
-.kbd-navigation .tictac-square:focus {
-    background: #ddd;
-}
-
 .tictac {
+    font-size: 2.2vh;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    max-height: 80vh;
 }
 
-.tictac-info {
-    margin-left: 20px;
+.tictac-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 38.5vh;
+    min-height: 80vh;
+    max-height: 80vh;
+    margin-left: 5px;
+}
+
+.tictac-status {
+    color: white;
+}
+
+.tictac-btn {
+    font-weight: normal;
+    font-size: 2vh;
+    color: white;
+    background: #4e5666;
+    border: 0.25vh solid #758199;
+    margin: 0.08vh;
+    width: 14vh;
+    height: 5vh;
+}
+
+.tictac-board-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tictac-btn.status {
+    font-weight: bold;
+    margin-bottom: 1vh;
+    width: 6vh;
+    height: 3vh;
+    font-size: 1.5vh;
+    margin: 0.08vh;
+    margin-left: auto;
+}
+
+.tictac-btn.selected {
+    font-weight: bold;
+}
+
+body {
+    background-color: #282c34;
 }

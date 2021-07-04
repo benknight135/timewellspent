@@ -1,15 +1,33 @@
+import React from 'react';
 import './Footer.css';
+import github from '../data/github.svg';
 
-function ComingSoon() {
-    const { REACT_APP_BUILD_DATE } = process.env;
-    const source_url = "github.com/benknight135/timewellspent"
-    return (
-        <div className="footer">
-            <p class="footer">Created by Ben Knight</p>
-            <p class="footer">Source: {source_url} </p>
-            <p class="footer">Last updated: {REACT_APP_BUILD_DATE}</p>
-        </div>
-    );
+class ComingSoon extends React.Component {
+    constructor(props) {
+      super(props);
+      const { REACT_APP_BUILD_DATE } = process.env;
+      this.state = {
+        last_updated: REACT_APP_BUILD_DATE,
+        github_repo: "https://github.com/benknight135/timewellspent"
+      };
+    }
+
+    gitHubExternal() {
+        window.open(this.state.github_repo);
+    }
+
+    render() {
+        const last_updated = this.state.last_updated;
+        return (
+            <div className="footer">
+                <div className="footer-container">
+                    <input className="footer-github" type="image" alt="Github logo" src={github} onClick={() => this.gitHubExternal()}/>
+                    <p className="footer p">Created by Ben Knight</p>
+                    <p className="footer p">Last updated: {last_updated}</p>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default ComingSoon;

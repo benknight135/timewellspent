@@ -122,30 +122,20 @@ class TicTac extends React.Component {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    const selectedStyle = {
-      fontWeight: "bold"
-    };
-
-    const defaultStyle = {
-      fontWeight: "normal"
-    };
-
     const moves = history.map((step, move) => {
       var move_index = move;
       if (historyOrderDesending) {
         move_index = (history.length - 1) - move;
       }
       const desc = move_index ?
-        'Go to move #' + move_index :
-        'Go to game start';
-      var descStyle = defaultStyle;
+        'Move #' + move_index :
+        'Game start';
+      var descStyle = "tictac-btn";
       if (move_index === this.state.stepNumber){
-        descStyle = selectedStyle;
+        descStyle = "tictac-btn selected";
       }
       return (
-        <li key={move}>
-          <button style={descStyle} onClick={() => this.jumpTo(move_index)}>{desc}</button>
-        </li>
+        <button className={descStyle} onClick={() => this.jumpTo(move_index)}>{desc}</button>
       );
     });
 
@@ -153,28 +143,30 @@ class TicTac extends React.Component {
     if (winner) {
       status = "Winner: " + winner;
     } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      status = "Player: " + (this.state.xIsNext ? "X" : "O");
     }
 
     let historyOrderText;
     if (historyOrderDesending){
-      historyOrderText = "descending";
+      historyOrderText = "Desc";
     } else {
-      historyOrderText = "ascending";
+      historyOrderText = "Asce";
     }
 
     return (
       <div className="tictac">
         <div className="tictac-board">
+          <div className="tictac-board-top">
+            <p className="tictac-status">{status}</p>
+          </div>
           <TicTacBoard
             squares={current.squares}
             onClick={(i,j) => this.handleHistoryClick(i,j)}
           />
         </div>
-        <div className="tictac-info">
-          <div>{status}</div>
-          <button onClick={() => this.toggleHistoryOrder()}>{historyOrderText}</button>
-          <ol>{moves}</ol>
+        <div className="tictac-history">
+          <button className="tictac-btn status" onClick={() => this.toggleHistoryOrder()}>{historyOrderText}</button>
+          {moves}
         </div>
       </div>
     );
