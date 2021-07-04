@@ -7,15 +7,15 @@ body {
 
 .secret {
     position: absolute;
-    left: calc(100vw - 8vw - 0.25vw); 
+    left: calc(100vw - 7vh - 0.25vh); 
     top: 0;
     font-weight: normal;
-    font-size: 1.8vw;
+    font-size: 2vh;
     color: #353b46;
     background: #282c34;
-    border: 0.25vw solid #353b46;
-    width: 8vw;
-    aspect-ratio: calc(2 / 1);
+    border: 0.25vh solid #353b46;
+    width: 7vh;
+    height: 5vh;
 }
 
 code {

@@ -6,9 +6,9 @@
     margin-bottom: 3vh;
 }
 p.footer {
-    font-size : calc(2vmin);
-    padding: calc(0.2vmin);
-    margin: calc(0.2vmin);
+    font-size : calc(1.7vmin);
+    padding: calc(0.17vmin);
+    margin: calc(0.17vmin);
 }
 .footer-github {
     height: calc(5vmin);
