@@ -1,43 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import TicTac from './games/TicTac';
-import ComingSoon from './pages/ComingSoon';
-import Footer from './components/Footer';
+import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show_secret: false
-    };
-  }
-
-  toggleGame(){
-    this.setState({
-      show_secret: !this.state.show_secret
-    });
-  }
-
-  render() {
-    var page = <ComingSoon />;
-    if (this.state.show_secret) {
-      page = <TicTac />;
-    }
-    return (
-      <React.StrictMode>
-        <button className="secret" onClick={() => this.toggleGame()}>Shh</button>
-        {page}
-        <Footer />
-      </React.StrictMode>
-    );
-  }
-}
-
 ReactDOM.render(
-  <App />,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

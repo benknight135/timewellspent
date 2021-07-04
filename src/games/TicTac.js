@@ -135,7 +135,7 @@ class TicTac extends React.Component {
         descStyle = "tictac-btn selected";
       }
       return (
-        <button className={descStyle} onClick={() => this.jumpTo(move_index)}>{desc}</button>
+        <button key={move} className={descStyle} onClick={() => this.jumpTo(move_index)}>{desc}</button>
       );
     });
 
