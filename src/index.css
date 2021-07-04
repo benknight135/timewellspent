@@ -5,6 +5,25 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.secret {
+    position: absolute;
+    left: calc(100vw - 7vh - 0.25vh); 
+    top: 0;
+    font-weight: normal;
+    font-size: 2vh;
+    color: #353b46;
+    background: #282c34;
+    border: 0.25vh solid #353b46;
+    width: 7vh;
+    height: 5vh;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .secret {
+        font-size: 1.5vh;
+    }
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

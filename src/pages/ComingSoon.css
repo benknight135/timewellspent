@@ -3,7 +3,7 @@
 }
 
 .ComingSoon-logo {
-    height: 40vmin;
+    height: 40vw;
     pointer-events: none;
 }
 
@@ -14,18 +14,15 @@
 }
 
 .ComingSoon-header {
-    background-color: #282c34;
-    min-height: 100vh;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.ComingSoon-link {
-    color: #61dafb;
+    min-height: 80vh;
+    max-height: 80vh;
+    max-width: 100vw;
+    font-size: calc(3vmin);
 }
 
 @keyframes ComingSoon-logo-spin {
@@ -35,4 +32,8 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+body {
+    background-color: #282c34;
 }

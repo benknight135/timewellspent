@@ -1,46 +1,89 @@
-ol, ul {
-    padding-left: 30px;
-    list-style-type: none;
-}
-
 .tictac-board-row:after {
     clear: both;
     content: "";
     display: table;
 }
 
-.tictac-status {
-    margin-bottom: 10px;
+.tictac-square {
+    background: #4e5666;
+    border: 0.5vw solid #758199;
+    color: white;
+    float: left;
+    width: calc(7vw + 7vh);
+    height: calc(7vw + 7vh);
+    font-size: calc(5vw + 5vh);
 }
 
-.tictac-square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .tictac-square {
+        width: calc(6vw + 6vh);
+        height: calc(7vw + 7vh);
+        font-size: calc(2vw + 2vh);
+    }
 }
+
 
 .tictac-square:focus {
     outline: none;
 }
 
-.kbd-navigation .tictac-square:focus {
-    background: #ddd;
-}
-
 .tictac {
+    font-size: calc(2vw + 2vh);
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    max-height: 80vh;
 }
 
-.tictac-info {
-    margin-left: 20px;
+.tictac-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30vh;
+    min-height: 60vh;
+    max-height: 60vh;
+    margin-left: 2vw;
+}
+
+.tictac-status {
+    color: white;
+}
+
+.tictac-btn {
+    font-weight: normal;
+    font-size: calc(0.8vw + 0.8vh);
+    color: white;
+    background: #4e5666;
+    border: 0.25vw solid #758199;
+    margin: calc(0.25vw + 0.25vh);
+    width: calc(6vw + 6vh);
+    height: calc(2vw + 2vh);
+}
+
+.tictac-board-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tictac-btn.status {
+    font-weight: normal;
+    margin-bottom: 1vh;
+    width: calc(2vw + 2vh);
+    height: calc(1vw + 1vh);
+    font-size: calc(0.45vw + 0.45vh);
+    margin-bottom: calc(0.25vw + 0.25vh);
+    margin-left: auto;
+}
+
+.tictac-btn.selected {
+    font-weight: bold;
+}
+
+body {
+    background-color: #282c34;
 }
