@@ -9,9 +9,9 @@
     border: 0.5vw solid #758199;
     color: white;
     float: left;
-    width: calc(6vw + 6vh);
-    height: calc(6vw + 6vh);
-    font-size: calc(5vw + 5vh);
+    width: calc(5vw + 5vh);
+    height: calc(5vw + 5vh);
+    font-size: calc(4vw + 4vh);
 }
 
 .tictac-square:focus {
